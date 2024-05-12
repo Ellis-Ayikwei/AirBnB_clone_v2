@@ -41,7 +41,6 @@ class FileStorage:
             except (AttributeError, KeyError):
                 pass
 
-
     def reload(self):
         """Loads storage dictionary from file"""
         from models.base_model import BaseModel
@@ -65,4 +64,3 @@ class FileStorage:
                     self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
-        
