@@ -13,11 +13,11 @@ class FileStorage:
         if cls:
             if isinstance(cls, str):
                 cls = eval(cls)
-                cls_dict = {}
-                for key, value in self.__objects.items():
-                    if isinstance(value, cls):
-                        cls_dict[key] = value
-                    return cls_dict
+            cls_dict = {}
+            for key, value in self.__objects.items():
+                if isinstance(value, cls):
+                    cls_dict[key] = value
+                return cls_dict
         return self.__objects
 
     def new(self, obj):
