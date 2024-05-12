@@ -131,11 +131,11 @@ class HBNBCommand(cmd.Cmd):
         except Exception as e:
             print(f"Error creating instance of {class_name}: {e}")
             return
-
         for param in params:
             try:
                 key, value = param.split('=')
                 if value.startswith('"') and value.endswith('"'):
+                    value = str(value)
                     value = value[1:-1].replace('_', ' ').replace('\\"', '')
                 elif '.' in value:
                     value = float(value)
