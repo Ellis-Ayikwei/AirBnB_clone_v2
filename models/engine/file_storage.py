@@ -14,7 +14,6 @@ class FileStorage:
             if isinstance(cls, str):
                 cls = eval(cls)
                 cls_dict = {}
-
                 for key, value in self.__objects.items():
                     if isinstance(value, cls):
                         cls_dict[key] = value
@@ -36,8 +35,10 @@ class FileStorage:
 
     def delete(self, obj=None):
         """deletes an existing element"""
+        
         try:
-            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
+            if obj:
+                del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
         except (AttributeError, KeyError):
             pass
 
@@ -65,3 +66,4 @@ class FileStorage:
                     self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+        
