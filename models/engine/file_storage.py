@@ -35,12 +35,11 @@ class FileStorage:
 
     def delete(self, obj=None):
         """deletes an existing element"""
-        
-        try:
-            if obj:
+        if obj:
+            try:
                 del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
-        except (AttributeError, KeyError):
-            pass
+            except (AttributeError, KeyError):
+                pass
 
 
     def reload(self):
