@@ -138,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
                 if value.startswith('"') and value.endswith('"'):
                     value = value[1:-1].replace('_', ' ').replace('\\"', '')
                 elif '.' in value:
-                    value = int(value)
+                    value = float(value)
                 setattr(new_instance, key, value)
             except Exception as e:
                 print(f"Error setting parameter {param}: {e}")
