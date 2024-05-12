@@ -114,7 +114,14 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """ Create an object of any class"""
+        """ Create an object of any class
+        
+        Args:
+            self:class name
+            args: cmd parameters
+            
+        Usage: create <Class name> <param 1> <param 2> <param 3>...
+        """
         if not args:
             print("** class name missing **")
             return
@@ -135,9 +142,8 @@ class HBNBCommand(cmd.Cmd):
             try:
                 key, value = param.split('=')
                 if value.startswith('"') and value.endswith('"'):
-                    
-                    value = value[1:-1].replace('_', ' ').replace('\\"', '')
                     value = str(value)
+                    value = value[1:-1].replace('_', ' ').replace('\\"', '')
                 elif '.' in value:
                     value = float(value)
                 else: 
