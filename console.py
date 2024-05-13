@@ -11,6 +11,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
 
@@ -114,11 +115,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class
-        
+
         Args:
             self:class name
             args: cmd parameters
-            
+
         Usage: create <Class name> <param 1> <param 2> <param 3>...
         """
         if not args:
@@ -145,7 +146,7 @@ class HBNBCommand(cmd.Cmd):
                     value = value[1:-1].replace('_', ' ').replace('\\"', '')
                 elif '.' in value:
                     value = float(value)
-                else: 
+                else:
                     value = int(value)
                 setattr(new_instance, key, value)
             except Exception as e:

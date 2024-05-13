@@ -15,21 +15,21 @@ class DBStorage:
     """Create tables in environment"""
     __engine = None
     __session = None
-    
+
     def __init__(self):
         user = getenv("HBNB_MYSQL_USER")
         passwd = getenv("HBNB_MYSQL_PWD")
         db = getenv("HBNB_MYSQL_DB")
         host = getenv("HBNB_MYSQL_HOST")
         env = getenv("HBNB_ENV")
-        
+
         self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}".
                                       format(user, passwd, host, db),
                                       pool_pre_ping=True)
-        
+
         if env == "test":
             Base.metadata.drop_all(self.__engine)
-            
+
     def all(self, cls=None):
         """returns a dictionary
         Return:
@@ -75,11 +75,10 @@ class DBStorage:
         """Create all tables in the database and initialize a new session."""
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine,
-                                        expire_on_commit=False)
+                                       expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
 
     def close(self):
         """Close the working SQLAlchemy session."""
         self.__session.close()
-            
