@@ -8,7 +8,7 @@ from os import getenv
 import models
 
 
-class Place(BaseModel):
+class Place(BaseModel, Base):
     """This is the class for Place
     Attributes:
         city_id: city id
