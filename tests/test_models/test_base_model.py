@@ -5,6 +5,7 @@ import unittest
 import datetime
 from uuid import UUID
 import json
+import pycodestyle
 import os
 
 
@@ -31,6 +32,15 @@ class test_basemodel(unittest.TestCase):
         """ """
         i = self.value()
         self.assertEqual(type(i), self.value)
+        
+    def test_pycodestyle(self):
+        """
+        Test pep8 format
+        """
+        pycostyle = pycodestyle.StyleGuide(quiet=True)
+        result = pycostyle.check_files(['models/base_model.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
     def test_kwargs(self):
         """ """
