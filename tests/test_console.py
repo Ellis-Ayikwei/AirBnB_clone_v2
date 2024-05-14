@@ -1,5 +1,8 @@
+#!/usr/bin/pyhton3
+"""Defines a test class for the console"""
 import unittest
 from console import HBNBCommand
+
 
 class TestCreateCommand(unittest.TestCase):
     def setUp(self):
@@ -22,7 +25,8 @@ class TestCreateCommand(unittest.TestCase):
 
     def test_create_with_invalid_parameter(self):
         self.console.do_create("Base invalid_param=invalid_value")
-        self.assertIn("** Unknown syntax: invalid_param=invalid_value **", self.console.stdout.getvalue())
+        self.assertIn("** Unknown syntax: invalid_param=invalid_value **",
+                      self.console.stdout.getvalue())
 
 
 if __name__ == '__main__':

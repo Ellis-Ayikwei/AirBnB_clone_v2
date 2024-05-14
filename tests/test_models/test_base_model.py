@@ -25,14 +25,14 @@ class test_basemodel(unittest.TestCase):
     def tearDown(self):
         try:
             os.remove('file.json')
-        except:
+        except FileExistsError:
             pass
 
     def test_default(self):
         """ """
         i = self.value()
         self.assertEqual(type(i), self.value)
-        
+
     def test_pycodestyle(self):
         """
         Test pep8 format

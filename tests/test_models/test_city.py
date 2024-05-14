@@ -30,7 +30,7 @@ class test_City(test_basemodel):
 
 class TestCity(unittest.TestCase):
     """ A test fr the city class"""
-    
+
     @classmethod
     def setUpClass(cls):
         """set up for test"""
@@ -43,24 +43,23 @@ class TestCity(unittest.TestCase):
         """at the end of the test this will tear it down"""
         del cls.city
 
-    
     def tearDown(self):
         """teardown"""
         try:
             os.remove("file.json")
         except Exception:
             pass
-        
+
     def test_pep8_City(self):
         """Tests pep8 styling"""
         style = pycodestyle.StyleGuide(quiet=True)
         p = style.check_files(['models/city.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
-        
+
     def test_docstrings(self):
         """Checkings for docstrings."""
         self.assertIsNotNone(City.__doc__)
-        
+
     def test_attributes_City(self):
         """check if City have attributes"""
         self.assertTrue('id' in self.city.__dict__)
