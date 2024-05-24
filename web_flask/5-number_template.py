@@ -47,17 +47,14 @@ def python_is_fun(text="is cool"):
 @app.route("/number/<int:n>", strict_slashes=False)
 def is_a_number(n):
     """retuns n and if n is a number """
-    if isinstance(n, int):
-        return f"{n} is a number"
-    return f"{n}"
+    return f"{n} is a number"
 
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def number_template(n):
     """Displays an HTML page only if <n> is an integer."""
-    if isinstance(n, int):
-        return render_template("5-number.html", n=n)
-    return f"{n}"
+    return render_template("5-number.html", n=n)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
