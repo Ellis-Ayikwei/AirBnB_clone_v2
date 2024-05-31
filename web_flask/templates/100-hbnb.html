@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>AirBnB clone</title>
+
+		<link rel="shortcut icon" href="../static/images/icon.ico" >
+
+		<link rel="stylesheet" href="../static/styles/4-common.css"/>
+		<link rel="stylesheet" href="../static/styles/3-header.css"/>
+		<link rel="stylesheet" href="../static/styles/3-footer.css"/>
+		<link rel="stylesheet" href="../static/styles/6-filters.css"/>
+		<link rel="stylesheet" href="../static/styles/8-places.css"/>
+		<LINK rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+	</head>
+    <body>
+		<header>
+			<div id="header_logo"></div>
+		</header>
+		<div class="container">
+			<SECTION class="filters">
+				<DIV class="locations">
+				  <H3>States</H3>
+				  <H4>&nbsp;</H4>
+				  <DIV class="popover">
+					<UL>
+					{% for state in states.values()|sort(attribute="name") %}
+					  <LI><STRONG>{{ state.name }}</STRONG>
+						<UL>
+						{% for city in state.cities|sort(attribute="name") %}
+						  <LI>{{ city.name }}</LI>
+						{% endfor %}
+						</UL>
+					  </LI>
+					{% endfor %}
+					</UL>
+				  </DIV>
+		
+				</DIV>
+				<DIV class="amenities">
+				  <H3>Amenities</H3>
+				  <H4>&nbsp;</H4>
+				  <DIV class="popover">
+					<UL>
+						{% for amenity in amenities.values()|sort(attribute="name") %}
+						<LI>{{ amenity.name }}</LI>
+						{% endfor %}
+					</UL>
+				  </DIV>
+				</DIV>
+				<BUTTON>Search</BUTTON>
+			  </SECTION>
+			<section class="places">
+				<h1>Places</h1>
+				{% for place in places.values()|sort(attribute="name") %}
+				<article>
+					<div class="headline">
+						<div class="headline_name">
+							<h2>{{ place.name|safe }}</h2>
+						</div>
+						<div class="price_by_night">&#36;{{ place.price_by_night }}</div>
+					</div>
+					<div class="information">
+						<div class="max_guest">
+							<I class="fa fa-users fa-3x" aria-hidden="true"></I>
+							<p>{{ place.max_guest}} Guests</p>
+						</div>
+						<div class="number_rooms">
+							<I class="fa fa-bed fa-3x" aria-hidden="true"></I>
+							<p>{{place.number_rooms}} Bedroom</p>
+						</div>
+						 <div class="number_bathrooms">
+							<I class="fa fa-bath fa-3x" aria-hidden="true"></I>
+							<p>{{place.number_bathrooms}} Bathroom</p>
+						</div>
+					</div>
+					<div class="user"><b>Owner</b>: {{ place.user.first_name }} {{ place.user.first_name }}</div>
+					<div class="description">
+						{{place.description|safe}}  
+					</div>
+				</article>
+				{% endfor %}
+			</section>
+		</div>
+		<footer>
+			<p>Holberton School</p>
+		</footer>
+	</body>
+</html>
